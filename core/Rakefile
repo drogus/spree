@@ -34,13 +34,17 @@ task :test_app do
   class CoreTestAppGenerator < Spree::Generators::TestAppGenerator
     def tweak_gemfile
       append_file 'Gemfile' do
-        "gem 'spree_core', :path => '#{File.dirname(__FILE__)}'"
+        <<-GEMFILE
+          gem 'spree_core', :path => '#{File.dirname(__FILE__)}'
+          gem 'spree_promo', :path => '#{File.expand_path(File.join(File.dirname(__FILE__), '../promo'))}'
+        GEMFILE
       end
     end
 
     def install_spree_core
       inside "test_app" do
         run 'rake spree_core:install'
+        run 'rake spree_promo:install'
       end
     end
 
