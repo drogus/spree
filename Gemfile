@@ -13,10 +13,9 @@ gemspec
 group :test do
   gem 'rspec-rails', '~> 2.1.0'
   gem 'factory_girl_rails'
-end
-
-group :cucumber do
-  gem 'cucumber-rails', '~> 0.3.2'
-  gem 'database_cleaner', '~> 0.5.2'
-  gem 'capybara', '~> 0.3.9', :require => false
+  gem 'steak', '>= 1.0.0.rc.2'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'fabrication'
+  gem 'launchy'
 end
