@@ -27,7 +27,7 @@ class UsersController < Spree::BaseController
     create_session
   end
 
-  update.flash I18n.t("account_updated")
+  update.flash { I18n.t("account_updated") }
 
   private
   def object
