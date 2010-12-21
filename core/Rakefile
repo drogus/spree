@@ -36,6 +36,9 @@ task :test_app do
     def install_spree_core
       inside "test_app" do
         run 'rake spree_core:install'
+        run 'rake spree_auth:install'
+        run 'rake spree_dash:install'
+        run 'rake spree_promo:install'
       end
     end
 
@@ -46,7 +49,10 @@ task :test_app do
     protected
     def full_path_for_local_gems
       <<-gems
-gem 'spree_core', :path => \'#{File.dirname(__FILE__)}\'
+gem 'spree_core', :path => '#{File.dirname(__FILE__)}'
+gem 'spree_auth', :path => '#{File.join(File.dirname(__FILE__), "..", "auth")}'
+gem 'spree_dash', :path => '#{File.join(File.dirname(__FILE__), "..", "dash")}'
+gem 'spree_promo', :path => '#{File.join(File.dirname(__FILE__), "..", "promo")}'
       gems
     end
   end
